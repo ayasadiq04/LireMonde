@@ -63,3 +63,9 @@ nav {
 }
 .nav-search input::placeholder { color: rgba(255,255,255,0.5); }
 .nav-search svg { color: rgba(255,255,255,0.5); flex-shrink: 0; }
+.page { display: none; animation: fadeIn .3s ease; }
+.page.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}

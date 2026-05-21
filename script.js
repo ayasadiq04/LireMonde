@@ -33,3 +33,12 @@ let searchQuery = '';
 let editingId = null;
 let alireToggleState = false;
 let currentModalBookId = null;
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.getElementById('nav-' + page).classList.add('active');
+  if (page === 'alire') renderReadlist();
+  if (page === 'admin') renderAdminTable();
+  window.scrollTo(0, 0);
+}
