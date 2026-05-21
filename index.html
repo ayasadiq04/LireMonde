@@ -9,7 +9,26 @@
   <base target="_blank">
 </head>
 <body>
-  
+  <nav>
+  <div class="nav-inner">
+    <a class="logo" onclick="navigate('home')">
+      <img src="images/logo.png" alt="LireMonde"/>
+      <span>LireMonde</span>
+    </a>
+    <div class="nav-links">
+      <a id="nav-home" class="active" onclick="navigate('home')">Accueil</a>
+      <a id="nav-alire" onclick="navigate('alire')">A lire</a>
+      <a id="nav-admin" onclick="navigate('admin')">Admin</a>
+    </div>
+    <div class="nav-search">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" placeholder="Rechercher un livre, un auteur..."
+             id="nav-search-input" oninput="onNavSearch(this.value)"/>
+    </div>
+  </div>
+</nav>
   <script src="script.js"></script>
 </body>
 </html>
