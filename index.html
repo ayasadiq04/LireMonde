@@ -80,6 +80,26 @@
 <div class="page" id="page-admin">
 
 </div>
+<div class="modal-overlay" id="modal">
+  <div class="modal" style="position:relative;">
+    <button class="modal-close" onclick="closeModal()">x</button>
+    <div class="modal-body">
+      <div class="modal-cover" id="modal-cover"></div>
+      <div class="modal-info">
+        <div class="modal-title" id="modal-title"></div>
+        <div class="modal-author" id="modal-author"></div>
+        <div><span class="genre-badge" id="modal-genre"></span></div>
+        <div class="modal-meta" id="modal-meta"></div>
+        <div class="modal-desc-label">Description</div>
+        <div class="modal-desc" id="modal-desc"></div>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-outline" id="modal-btn-remove" onclick="toggleReadlist()">Retirer de la liste</button>
+      <button class="btn-dark" id="modal-btn-add" onclick="toggleReadlist()">Ajouter a la liste A lire</button>
+    </div>
+  </div>
+</div>
   <script src="script.js"></script>
 </body>
 </html>

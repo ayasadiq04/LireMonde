@@ -119,5 +119,37 @@ function renderBooks() {
     </div>
   `).join('');
 }
+function openModal(id) {
+  const b = books.find(x => x.id === id);
+  if (!b) return;
+  currentModalBookId = id;
+  const coverEl = document.getElementById('modal-cover');
+  if (b.image) {
+    coverEl.innerHTML = `<img src="${b.image}" alt="${b.titre}"
+      style="width:160px;border-radius:8px;object-fit:cover;aspect-ratio:2/3;"/>`;
+  } else {
+    coverEl.innerHTML = makeCover(b, 'book-cover-placeholder');
+  }
+  document.getElementById('modal-title').textContent = b.titre;
+  document.getElementById('modal-author').textContent = b.auteur;
+  document.getElementById('modal-genre').textContent = b.genre;
+  document.getElementById('modal-meta').innerHTML = `Publie en ${b.annee} &nbsp;|&nbsp; Pages : ${b.pages}`;
+  document.getElementById('modal-desc').textContent = b.desc;
+  updateModalBtns(b);
+  document.getElementById('modal').classList.add('open');
+}
 
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  currentModalBookId = null;
+}
+
+function updateModalBtns(b) {
+  document.getElementById('modal-btn-remove').style.display = b.alire ? '' : 'none';
+  document.getElementById('modal-btn-add').style.display = b.alire ? 'none' : '';
+}
+
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
 renderBooks(); 
