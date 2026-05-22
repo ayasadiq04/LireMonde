@@ -64,3 +64,60 @@ function selectGenre(el, g) {
   if (dd) dd.value = g;
   renderBooks();
 }
+function makeCover(book, cls = 'book-cover-placeholder') {
+  if (book.image) {
+    return `<img class="book-cover" src="${book.image}" alt="${book.titre}"
+      style="width:100%;aspect-ratio:2/3;object-fit:cover;display:block;"
+      onerror="this.outerHTML=makeCoverFallback('${book.titre}','${book.color||'#1A1A2E'}','${cls}')"/>`;
+  }
+  return makeCoverFallback(book.titre, book.color || '#1A1A2E', cls);
+}
+
+function makeCoverFallback(titre, color, cls = 'book-cover-placeholder') {
+  const initials = titre.split(' ').map(w => w[0]).join('').slice(0, 4);
+  return `<div class="${cls}" style="background:${color}"><div>${initials}</div></div>`;
+}
+
+function makeThumbCover(book) {
+  if (book.image) {
+    return `<img src="${book.image}" alt="${book.titre}"
+      style="width:36px;height:48px;object-fit:cover;border-radius:4px;display:block;"
+      onerror="this.style.display='none'"/>`;
+  }
+  const initials = book.titre.split(' ').map(w => w[0]).join('').slice(0, 4);
+  return `<div class="book-cover-placeholder"
+    style="background:${book.color||'#1A1A2E'};width:36px;height:48px;font-size:.6rem;
+    aspect-ratio:unset;border-radius:4px;"><div>${initials}</div></div>`;
+}
+
+function getFilteredBooks() {
+  return books.filter(b => {
+    const matchGenre = currentFilter === 'Tous' || b.genre === currentFilter;
+    const q = searchQuery.toLowerCase();
+    const matchQ = !q || b.titre.toLowerCase().includes(q) || b.auteur.toLowerCase().includes(q);
+    return matchGenre && matchQ;
+  });
+}
+
+function renderBooks() {
+  const grid = document.getElementById('books-grid');
+  const filtered = getFilteredBooks();
+  document.getElementById('book-count').textContent = filtered.length + ' livres';
+  if (!filtered.length) {
+    grid.innerHTML = '<p style="color:var(--text-light);padding:32px 0;grid-column:1/-1">Aucun livre trouve.</p>';
+    return;
+  }
+  grid.innerHTML = filtered.map(b => `
+    <div class="book-card" onclick="openModal(${b.id})">
+      ${makeCover(b)}
+      <div class="book-info">
+        <div class="book-title">${b.titre}</div>
+        <div class="book-author">${b.auteur}</div>
+        <div class="book-genre">${b.genre}</div>
+        <button class="btn-detail" onclick="event.stopPropagation();openModal(${b.id})">Voir details</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+renderBooks(); 
