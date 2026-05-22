@@ -42,3 +42,25 @@ function navigate(page) {
   if (page === 'admin') renderAdminTable();
   window.scrollTo(0, 0);
 }
+function filterBooks(q) { searchQuery = q; renderBooks(); }
+function onNavSearch(q) {
+  searchQuery = q;
+  if (document.getElementById('search-main'))
+    document.getElementById('search-main').value = q;
+  renderBooks();
+}
+function filterByGenreDropdown(g) {
+  currentFilter = g;
+  document.querySelectorAll('.genre-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent === g || (g === 'Tous' && btn.textContent === 'Tous'));
+  });
+  renderBooks();
+}
+function selectGenre(el, g) {
+  currentFilter = g;
+  document.querySelectorAll('.genre-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  const dd = document.getElementById('genre-dropdown');
+  if (dd) dd.value = g;
+  renderBooks();
+}
