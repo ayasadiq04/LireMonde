@@ -152,4 +152,16 @@ function updateModalBtns(b) {
 document.getElementById('modal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeModal();
 });
+function toggleReadlist() {
+  const b = books.find(x => x.id === currentModalBookId);
+  if (!b) return;
+  b.alire = !b.alire;
+  updateModalBtns(b);
+  showToast(b.alire
+    ? `"${b.titre}" ajoute a votre liste`
+    : `"${b.titre}" retire de la liste`
+  );
+  renderBooks();
+  renderAdminTable();
+}
 renderBooks(); 
