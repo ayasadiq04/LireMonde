@@ -6,7 +6,7 @@
 <title>LireMonde</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
-<base target="_blank">
+
 </head>
 <body>
 
@@ -35,7 +35,7 @@
       <div class="hero-text">
         <h1>Decouvrez votre<br/>prochaine lecture</h1>
         <p>Explorez notre collection de livres varies et trouvez votre prochain coup de coeur.</p>
-        <button class="btn-gold" onclick="document.getElementById('search-main').focus()">
+        <button class="btn-gold" onclick="explorerMaintenant()">
           Explorer maintenant
         </button>
       </div>
@@ -193,7 +193,7 @@
             </div>
             <div class="form-group">
               <label class="form-label">Publie en</label>
-              <input class="form-input" id="f-annee" placeholder="Annee de publication"/>
+              <input class="form-input" id="f-annee" type="number" min="0" max="2099" placeholder="Annee de publication" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
             </div>
             <div class="form-group full">
               <label class="form-label">Description</label>
@@ -205,7 +205,7 @@
             </div>
             <div class="form-group">
               <label class="form-label">Pages</label>
-              <input class="form-input" id="f-pages" placeholder="Nombre de pages"/>
+              <input class="form-input" id="f-pages" type="number" min="0" placeholder="Nombre de pages" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
             </div>
             <div class="form-group">
               <label class="form-label">A lire</label>
