@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LireMonde</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
-  <base target="_blank">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LireMonde</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<base target="_blank">
 </head>
 <body>
-  <nav>
+
+<nav>
   <div class="nav-inner">
     <a class="logo" onclick="navigate('home')">
       <img src="images/logo.png" alt="LireMonde"/>
@@ -21,64 +22,208 @@
       <a id="nav-admin" onclick="navigate('admin')">Admin</a>
     </div>
     <div class="nav-search">
-      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-      </svg>
-      <input type="text" placeholder="Rechercher un livre, un auteur..."
-             id="nav-search-input" oninput="onNavSearch(this.value)"/>
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Rechercher un livre, un auteur..." id="nav-search-input" oninput="onNavSearch(this.value)"/>
     </div>
   </div>
 </nav>
+
 <div class="page active" id="page-home">
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <h1>Decouvrez votre<br/>prochaine lecture</h1>
-      <p>Explorez notre collection de livres varies et trouvez votre prochain coup de coeur.</p>
-      <button class="btn-gold" onclick="document.getElementById('search-main').focus()">
-        Explorer maintenant
-      </button>
-    </div>
-    <div class="hero-visual">
-      <img src="images/bureau.png" alt="bureau"/>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Decouvrez votre<br/>prochaine lecture</h1>
+        <p>Explorez notre collection de livres varies et trouvez votre prochain coup de coeur.</p>
+        <button class="btn-gold" onclick="document.getElementById('search-main').focus()">
+          Explorer maintenant
+        </button>
+      </div>
+      <div class="hero-visual">
+        <img src="images/bureau.png" alt="bureau"/>
+      </div>
     </div>
   </div>
-</div>
-<div class="search-section">
-  <div class="search-bar">
-    <svg width="16" height="16" fill="none" stroke="var(--gray-mid)" stroke-width="2" viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-    </svg>
-    <input type="text" id="search-main"
-           placeholder="Rechercher un livre, un auteur..."
-           oninput="filterBooks(this.value)"/>
+
+  <div class="search-section">
+    <div class="search-bar">
+      <svg width="16" height="16" fill="none" stroke="var(--gray-mid)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search-main" placeholder="Rechercher un livre, un auteur..." oninput="filterBooks(this.value)"/>
+    </div>
+    <select class="genre-select" id="genre-dropdown" onchange="filterByGenreDropdown(this.value)">
+      <option value="Tous">Tous les genres</option>
+      <option>Classique</option>
+      <option>Science-fiction</option>
+      <option>Drame</option>
+      <option>Fantasy</option>
+    </select>
   </div>
-  <select class="genre-select" id="genre-dropdown" onchange="filterByGenreDropdown(this.value)">
-    <option value="Tous">Tous les genres</option>
-    <option>Classique</option>
-    <option>Science-fiction</option>
-    <option>Drame</option>
-    <option>Fantasy</option>
-  </select>
+
+  <div class="filter-section">
+    <button class="genre-btn active" onclick="selectGenre(this,'Tous')">Tous</button>
+    <button class="genre-btn" onclick="selectGenre(this,'Classique')">Classique</button>
+    <button class="genre-btn" onclick="selectGenre(this,'Science-fiction')">Science-fiction</button>
+    <button class="genre-btn" onclick="selectGenre(this,'Drame')">Drame</button>
+    <button class="genre-btn" onclick="selectGenre(this,'Fantasy')">Fantasy</button>
+    <span class="count-label" id="book-count"></span>
+  </div>
+
+  <div class="books-section">
+    <div class="books-grid" id="books-grid"></div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="logo" onclick="navigate('home')" style="color: white;">Lire<span style="color: var(--gold);">Monde</span></a>
+        <p>Votre plateforme de lecture en ligne preferee.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a onclick="navigate('home')">Accueil</a>
+        <a onclick="navigate('alire')">A lire</a>
+        <a onclick="navigate('admin')">Admin</a>
+      </div>
+      <div class="footer-col">
+        <h4>Genres</h4>
+        <a>Classique</a>
+        <a>Science-fiction</a>
+        <a>Drame</a>
+        <a>Fantasy</a>
+      </div>
+      <div class="footer-col">
+        <h4>A propos</h4>
+        <a>Qui sommes-nous ?</a>
+        <a>Contact</a>
+        <a>Mentions legales</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 LireMonde. Tous droits reserves.</div>
+  </footer>
 </div>
 
-<div class="filter-section">
-  <button class="genre-btn active" onclick="selectGenre(this,'Tous')">Tous</button>
-  <button class="genre-btn" onclick="selectGenre(this,'Classique')">Classique</button>
-  <button class="genre-btn" onclick="selectGenre(this,'Science-fiction')">Science-fiction</button>
-  <button class="genre-btn" onclick="selectGenre(this,'Drame')">Drame</button>
-  <button class="genre-btn" onclick="selectGenre(this,'Fantasy')">Fantasy</button>
-  <span class="count-label" id="book-count"></span>
-</div>
-<div class="books-section">
-  <div class="books-grid" id="books-grid"></div>
-</div>
-</div>
 <div class="page" id="page-alire">
-
+  <div class="page-header">
+    <h1>Ma liste A lire</h1>
+    <p>Les livres que vous souhaitez lire plus tard.</p>
+  </div>
+  <div class="readlist-container">
+    <div class="readlist-card" id="readlist-items"></div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="logo" onclick="navigate('home')" style="color: white;">Lire<span style="color: var(--gold);">Monde</span></a>
+        <p>Votre plateforme de lecture en ligne preferee.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a onclick="navigate('home')">Accueil</a>
+        <a onclick="navigate('alire')">A lire</a>
+        <a onclick="navigate('admin')">Admin</a>
+      </div>
+      <div class="footer-col">
+        <h4>Genres</h4>
+        <a>Classique</a><a>Science-fiction</a><a>Drame</a><a>Fantasy</a>
+      </div>
+      <div class="footer-col">
+        <h4>A propos</h4>
+        <a>Qui sommes-nous ?</a><a>Contact</a><a>Mentions legales</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 LireMonde. Tous droits reserves.</div>
+  </footer>
 </div>
 <div class="page" id="page-admin">
-
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-label">Admin</div>
+      <a class="admin-nav-item active" onclick="showAdminTab('table')">Tableau de bord</a>
+      <a class="admin-nav-item" onclick="showAdminTab('form')">Ajouter un livre</a>
+      <div class="admin-logout">
+        <a class="admin-nav-item" onclick="navigate('home')">Deconnexion</a>
+      </div>
+    </aside>
+    <div class="admin-content">
+      <div id="admin-tab-table">
+        <div class="admin-header">
+          <h2>Gestion des livres</h2>
+          <button class="btn-gold" onclick="showAdminTab('form'); clearForm()">+ Ajouter un livre</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Couverture</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Genre</th>
+                <th>A lire</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+      <div id="admin-tab-form" style="display:none;">
+        <div class="admin-header">
+          <h2 id="form-title">Ajouter / Modifier un livre</h2>
+        </div>
+        <div class="admin-form-card">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Titre</label>
+              <input class="form-input" id="f-titre" placeholder="Titre du livre"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Auteur</label>
+              <input class="form-input" id="f-auteur" placeholder="Auteur du livre"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Genre</label>
+              <select class="form-select" id="f-genre">
+                <option value="">Selectionner un genre</option>
+                <option>Classique</option>
+                <option>Science-fiction</option>
+                <option>Drame</option>
+                <option>Fantasy</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Publie en</label>
+              <input class="form-input" id="f-annee" placeholder="Annee de publication"/>
+            </div>
+            <div class="form-group full">
+              <label class="form-label">Description</label>
+              <textarea class="form-textarea" id="f-desc" placeholder="Description du livre..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Couverture (URL)</label>
+              <input class="form-input" id="f-cover" placeholder="https://exemple.com/image.jpg"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Pages</label>
+              <input class="form-input" id="f-pages" placeholder="Nombre de pages"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">A lire</label>
+              <div class="toggle-wrap">
+                <span class="toggle-label">Non</span>
+                <button class="toggle off" id="f-alire-toggle" onclick="toggleAlire()"></button>
+                <span class="toggle-label">Oui</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn-cancel" onclick="showAdminTab('table')">Annuler</button>
+            <button class="btn-gold" onclick="saveBook()">Enregistrer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="modal-overlay" id="modal">
   <div class="modal" style="position:relative;">
@@ -100,6 +245,7 @@
     </div>
   </div>
 </div>
-  <script src="script.js"></script>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
 </body>
 </html>
