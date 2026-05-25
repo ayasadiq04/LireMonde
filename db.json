@@ -68,7 +68,7 @@
       "annee": 1844,
       "pages": 1276,
       "desc": "Edmond Dantes, victime d'une terrible injustice, orchestre une vengeance meticuleuse contre ceux qui l'ont trahi.",
-      "alire": true,
+      "alire": false,
       "color": "#4A1942",
       "image": "images/le comte de monte-cristo.png"
     },
@@ -92,7 +92,7 @@
       "annee": 1947,
       "pages": 308,
       "desc": "Dans la ville d'Oran frappee par la peste, le docteur Rieux et ses compagnons luttent contre l'epidemie et l'absurde condition humaine.",
-      "alire": false,
+      "alire": true,
       "color": "#0D3349",
       "image": "images/la peste.png"
     }
