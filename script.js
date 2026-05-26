@@ -184,6 +184,9 @@ async function toggleReadlist() {
   updateModalBtns(updated);
   showToast(updated.alire ? `"${updated.titre}" ajouté à votre liste` : `"${updated.titre}" retiré de la liste`);
   renderBooks(); renderAdminTable();
+  if (document.getElementById('page-alire').classList.contains('active')) {
+    renderReadlist();
+  }
 }
 
 document.getElementById('modal').addEventListener('click', e => {
