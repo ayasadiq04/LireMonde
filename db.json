@@ -80,7 +80,7 @@
       "annee": 1953,
       "pages": 158,
       "desc": "Dans un futur dystopique, les pompiers brulent les livres. Guy Montag, pompier, commence a douter du systeme et a lire en secret.",
-      "alire": true,
+      "alire": false,
       "color": "#8B1A1A",
       "image": "images/fahrenhet.png"
     },

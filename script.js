@@ -294,6 +294,11 @@ async function saveBook() {
   const pages  = parseInt(document.getElementById('f-pages').value) || 0;
   const desc   = document.getElementById('f-desc').value.trim();
   const image  = document.getElementById('f-cover').value.trim();
+  if (image && !image.startsWith('http')) {
+    showToast('URL invalide. Elle doit commencer par http://');
+    document.getElementById('f-cover').focus();
+    return;
+  }
   if (editingId) {
     const data = { ...books.find(x => x.id === editingId), titre, auteur, genre, annee, pages, desc, alire: alireToggleState };
     if (image) data.image = image;
