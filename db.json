@@ -56,7 +56,7 @@
       "annee": 1954,
       "pages": 1178,
       "desc": "Le hobbit Frodon Sacquet doit detruire l'Anneau Unique pour sauver la Terre du Milieu des griffes du Seigneur des Tenebres Sauron.",
-      "alire": false,
+      "alire": true,
       "color": "#1B4332",
       "image": "images/le seigneur des anneaux.png"
     },
@@ -92,7 +92,7 @@
       "annee": 1947,
       "pages": 308,
       "desc": "Dans la ville d'Oran frappee par la peste, le docteur Rieux et ses compagnons luttent contre l'epidemie et l'absurde condition humaine.",
-      "alire": true,
+      "alire": false,
       "color": "#0D3349",
       "image": "images/la peste.png"
     }

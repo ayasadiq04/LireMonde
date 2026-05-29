@@ -19,6 +19,10 @@ async function fetchBooks() {
     books = await res.json();
     renderBooks(); renderAdminTable();
   } catch { showToast('Impossible de charger les livres.'); }
+  const savedPage = localStorage.getItem('liremonde_page');
+if (savedPage && ['home', 'alire', 'admin'].includes(savedPage)) {
+  navigate(savedPage);
+}
 }
 
 async function apiAddBook(data) {
@@ -67,6 +71,8 @@ function navigate(page) {
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
   document.getElementById('page-' + page).classList.add('active');
   document.getElementById('nav-' + page).classList.add('active');
+  localStorage.setItem('liremonde_page', page);
+  
   if (page === 'alire') renderReadlist();
   if (page === 'admin') renderAdminTable();
   window.scrollTo(0, 0);
@@ -184,7 +190,7 @@ async function toggleReadlist() {
   updateModalBtns(updated);
   showToast(updated.alire ? `"${updated.titre}" ajouté à votre liste` : `"${updated.titre}" retiré de la liste`);
   renderBooks(); renderAdminTable();
-  if (document.getElementById('page-alire').classList.contains('active')) {
+   if (document.getElementById('page-alire').classList.contains('active')) {
     renderReadlist();
   }
 }
