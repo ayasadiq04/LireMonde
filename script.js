@@ -22,6 +22,10 @@ async function fetchBooks() {
   const savedPage = localStorage.getItem('liremonde_page');
 if (savedPage && ['home', 'alire', 'admin'].includes(savedPage)) {
   navigate(savedPage);
+} else {
+  // Default: ensure search is visible on home
+  const navSearch = document.getElementById('nav-search-box');
+  if (navSearch) navSearch.style.display = '';
 }
 }
 
@@ -72,7 +76,13 @@ function navigate(page) {
   document.getElementById('page-' + page).classList.add('active');
   document.getElementById('nav-' + page).classList.add('active');
   localStorage.setItem('liremonde_page', page);
-  
+
+  // Show/hide nav search based on page
+  const navSearch = document.getElementById('nav-search-box');
+  if (navSearch) {
+    navSearch.style.display = (page === 'home') ? '' : 'none';
+  }
+
   if (page === 'alire') renderReadlist();
   if (page === 'admin') renderAdminTable();
   window.scrollTo(0, 0);
@@ -190,9 +200,6 @@ async function toggleReadlist() {
   updateModalBtns(updated);
   showToast(updated.alire ? `"${updated.titre}" ajouté à votre liste` : `"${updated.titre}" retiré de la liste`);
   renderBooks(); renderAdminTable();
-   if (document.getElementById('page-alire').classList.contains('active')) {
-    renderReadlist();
-  }
 }
 
 document.getElementById('modal').addEventListener('click', e => {

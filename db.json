@@ -56,7 +56,7 @@
       "annee": 1954,
       "pages": 1178,
       "desc": "Le hobbit Frodon Sacquet doit detruire l'Anneau Unique pour sauver la Terre du Milieu des griffes du Seigneur des Tenebres Sauron.",
-      "alire": true,
+      "alire": false,
       "color": "#1B4332",
       "image": "images/le seigneur des anneaux.png"
     },
@@ -68,7 +68,7 @@
       "annee": 1844,
       "pages": 1276,
       "desc": "Edmond Dantes, victime d'une terrible injustice, orchestre une vengeance meticuleuse contre ceux qui l'ont trahi.",
-      "alire": false,
+      "alire": true,
       "color": "#4A1942",
       "image": "images/le comte de monte-cristo.png"
     },
@@ -80,7 +80,7 @@
       "annee": 1953,
       "pages": 158,
       "desc": "Dans un futur dystopique, les pompiers brulent les livres. Guy Montag, pompier, commence a douter du systeme et a lire en secret.",
-      "alire": false,
+      "alire": true,
       "color": "#8B1A1A",
       "image": "images/fahrenhet.png"
     },
