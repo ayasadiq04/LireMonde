@@ -1,5 +1,4 @@
 const API_URL = 'http://localhost:3000/livres';
-const COLORS = ['#1A1A2E','#2C3E50','#8B1A1A','#1B4332','#1E3A5F','#4A1942','#7B3F00','#0D3349'];
 let books = [], currentFilter = 'Tous', searchQuery = '';
 let editingId = null, currentModalBookId = null;
 
@@ -308,7 +307,7 @@ async function saveBook() {
     if (image) data.image = image;
     await apiUpdateBook(editingId, data);
   } else {
-    const data = { titre, auteur, genre, annee, pages, desc, alire: false, color: COLORS[books.length % COLORS.length] };
+    const data = { titre, auteur, genre, annee, pages, desc, alire: false };
     if (image) data.image = image;
     await apiAddBook(data);
   }

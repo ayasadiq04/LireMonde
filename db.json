@@ -20,7 +20,7 @@
       "annee": 1943,
       "pages": 96,
       "desc": "Un aviateur echoue dans le desert rencontre un mysterieux petit prince venu d'une autre planete, qui lui enseigne l'essentiel de la vie.",
-      "alire": true,
+      "alire": false,
       "color": "#F5A623",
       "image": "images/le petit prince.png"
     },
@@ -80,7 +80,7 @@
       "annee": 1953,
       "pages": 158,
       "desc": "Dans un futur dystopique, les pompiers brulent les livres. Guy Montag, pompier, commence a douter du systeme et a lire en secret.",
-      "alire": true,
+      "alire": false,
       "color": "#8B1A1A",
       "image": "images/fahrenhet.png"
     },
