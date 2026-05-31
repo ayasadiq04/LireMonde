@@ -1,7 +1,7 @@
 const API_URL = 'http://localhost:3000/livres';
 const COLORS = ['#1A1A2E','#2C3E50','#8B1A1A','#1B4332','#1E3A5F','#4A1942','#7B3F00','#0D3349'];
 let books = [], currentFilter = 'Tous', searchQuery = '';
-let editingId = null, alireToggleState = false, currentModalBookId = null;
+let editingId = null, currentModalBookId = null;
 
 // API
 const api = {
@@ -273,8 +273,6 @@ function editBook(id) {
   document.getElementById('f-desc').value   = b.desc;
   document.getElementById('f-pages').value  = b.pages;
   document.getElementById('f-cover').value  = b.image || '';
-  alireToggleState = b.alire;
-  document.getElementById('f-alire-toggle').classList.toggle('off', !b.alire);
   document.getElementById('form-title').textContent = 'Modifier : ' + b.titre;
   showAdminTab('form');
 }
@@ -288,14 +286,7 @@ function clearForm() {
   editingId = null;
   ['f-titre','f-auteur','f-annee','f-desc','f-cover','f-pages'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('f-genre').value = '';
-  alireToggleState = false;
-  document.getElementById('f-alire-toggle').classList.add('off');
   document.getElementById('form-title').textContent = 'Ajouter / Modifier un livre';
-}
-
-function toggleAlire() {
-  alireToggleState = !alireToggleState;
-  document.getElementById('f-alire-toggle').classList.toggle('off', !alireToggleState);
 }
 
 async function saveBook() {
@@ -313,11 +304,11 @@ async function saveBook() {
     return;
   }
   if (editingId) {
-    const data = { ...books.find(x => x.id === editingId), titre, auteur, genre, annee, pages, desc, alire: alireToggleState };
+    const data = { ...books.find(x => x.id === editingId), titre, auteur, genre, annee, pages, desc, alire: false };
     if (image) data.image = image;
     await apiUpdateBook(editingId, data);
   } else {
-    const data = { titre, auteur, genre, annee, pages, desc, alire: alireToggleState, color: COLORS[books.length % COLORS.length] };
+    const data = { titre, auteur, genre, annee, pages, desc, alire: false, color: COLORS[books.length % COLORS.length] };
     if (image) data.image = image;
     await apiAddBook(data);
   }

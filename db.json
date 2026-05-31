@@ -20,7 +20,7 @@
       "annee": 1943,
       "pages": 96,
       "desc": "Un aviateur echoue dans le desert rencontre un mysterieux petit prince venu d'une autre planete, qui lui enseigne l'essentiel de la vie.",
-      "alire": false,
+      "alire": true,
       "color": "#F5A623",
       "image": "images/le petit prince.png"
     },
@@ -68,7 +68,7 @@
       "annee": 1844,
       "pages": 1276,
       "desc": "Edmond Dantes, victime d'une terrible injustice, orchestre une vengeance meticuleuse contre ceux qui l'ont trahi.",
-      "alire": true,
+      "alire": false,
       "color": "#4A1942",
       "image": "images/le comte de monte-cristo.png"
     },
