@@ -43,18 +43,6 @@
     </div>
   </div>
 
-  <div class="search-section">
-    <div class="search-bar">
-      <input type="text" id="search-main" placeholder="🔍 Rechercher un livre, un auteur..." oninput="filterBooks(this.value)"/>
-    </div>
-    <select class="genre-select" id="genre-dropdown" onchange="filterByGenreDropdown(this.value)">
-      <option value="Tous">Tous les genres</option>
-      <option>Classique</option>
-      <option>Science-fiction</option>
-      <option>Drame</option>
-      <option>Fantasy</option>
-    </select>
-  </div>
 
   <div class="filter-section">
     <button class="genre-btn active" onclick="selectGenre(this,'Tous')">Tous</button>

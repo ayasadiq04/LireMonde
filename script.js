@@ -89,8 +89,7 @@ function navigate(page) {
 
 function explorerMaintenant() {
   setTimeout(() => {
-    document.querySelector('.search-section')?.scrollIntoView({ behavior: 'smooth' });
-    document.getElementById('search-main')?.focus();
+    document.querySelector('.books-section')?.scrollIntoView({ behavior: 'smooth' });
   }, 100);
 }
 
